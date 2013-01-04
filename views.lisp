@@ -14,7 +14,7 @@
       ". The code for this site and this server was written in " (strong ()
 								   "Common Lisp")
       ". The code for this site is available on "
-      (strong () (a (:href "https://github.com/BrianBelleville/bel-serve") "GitHub"))
+      (strong () (a (:href "https://github.com/BrianBelleville") "GitHub"))
       ". This includes the code for the " (strong () (a (:href "https://github.com/BrianBelleville/bel-serve") "http server"))
       ", the " (strong () (a (:href "https://github.com/BrianBelleville/first-gen")
 			"web framework"))
