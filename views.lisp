@@ -33,18 +33,18 @@
     (p ()
       "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California, here is my " (strong () (a (:href "/resume.pdf") "resume")) ". In case you were wondering I will not be manually updating my age each year.")
     (p ()
-      "Here are links to pages created to test and demonstrate new functionality of the server and framework:"
+      "Here are links to pages created to test and demonstrate new functionality of the server and framework:")
       (ul ()
 	(li ()
 	  (strong () (a (:href "/http-header") "Access to http header fields")))
 	(li ()
-	  (strong () (a (:href "/get-request") "Parsing the query string of a get request")))))))
+	  (strong () (a (:href "/get-request") "Parsing the query string of a get request"))))))
   
 (defview header-table ()
   (common "Brian Belleville - Http Header"
     (h2 () "Http Header")
     (p ()
-      "Here are the header fields and their values of the http request you made:"
+      "Here are the header fields and their values of the http request you made:")
       (table ()
 	(tr ()
 	  (th () "Header Field")
@@ -53,7 +53,7 @@
 		   (tr ()
 		     (td () (symbol-name key))
 		     (td () val)))
-		 *http-header*)))
+		 *http-header*))
     (p () (home-link))))
 
 (defview query-string-test ()
