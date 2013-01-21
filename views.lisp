@@ -73,3 +73,9 @@
   (common "Brian Belleville - Personalized Greeting"
     (h2 () "Hello Brian, welcome to your homepage.")
     (p () (home-link))))
+
+(defview scold-greeting ()
+  (common "Brian Belleville - Personalized Greeting"
+    (h2 () "You entered forbidden characters.")
+    (p () "Only the alphabetic characters, SPACE, and \"-\" are allowed. You can " (a (:href "/get-request") "try again") ".")
+    (p () (home-link))))
