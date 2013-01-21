@@ -1,11 +1,23 @@
 (in-package :homepage)
 
+(defun home-link ()
+  (a (:href "/") "Home"))
+
+(defmacro common (title-phrase &body body-forms)
+  "Common start to all views"
+  `(progn
+     (doctype-html)
+     (html ()
+       (head ()
+	 (meta (:http-equiv "content-type" :content "text/html; charset=utf-8"))
+	 (title () ,title-phrase))
+       (body ()
+	 ,@body-forms))))
+  
+
 (defview root (age)
   (declare (type fixnum age))
-  (doctype-html)
-  (html ()
-    (head () (title () "Brian Belleville"))
-  (body ()
+  (common "Brian Belleville"
     (h1 () "Welcome to the homepage of Brian Belleville")
     (img (:src "/face.jpeg" :alt "portrait"))
     (p ()
@@ -17,7 +29,50 @@
       (strong () (a (:href "https://github.com/BrianBelleville/bel-serve") "GitHub"))
       ". This includes the code for the " (strong () (a (:href "https://github.com/BrianBelleville/bel-serve") "http server"))
       ", the " (strong () (a (:href "https://github.com/BrianBelleville/first-gen")
-			"web framework"))
-      ", and the " (strong () (a (:href "https://github.com/BrianBelleville/homepage") "website itself")) ".")
+			    "web framework"))
+      ", and the " (strong () (a (:href "https://github.com/BrianBelleville/homepage") "website itself")) ". I am working on this for experimentation and learning, and will be makeing changes as I add more functionality.")
     (p ()
-      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California, here is my " (strong () (a (:href "/resume.pdf") "Resume")) ". In case you were wondering I will not be manually updating my age each year."))))
+      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California, here is my " (strong () (a (:href "/resume.pdf") "resume")) ". In case you were wondering I will not be manually updating my age each year.")
+    (p ()
+      "Here are links to pages created to test and demonstrate new functionality of the server and framework:"
+      (ul ()
+	(li ()
+	  (strong () (a (:href "/http-header") "Access to http header fields")))
+	(li ()
+	  (strong () (a (:href "/get-request") "Parsing the query string of a get request")))))))
+  
+(defview header-table ()
+  (common "Brian Belleville - Http Header"
+    (h2 () "Http Header")
+    (p ()
+      "Here are the header fields and their values of the http request you made:"
+      (table ()
+	(tr ()
+	  (th () "Header Field")
+	  (th () "Value"))
+	(maphash (lambda (key val)
+		   (tr ()
+		     (td () (symbol-name key))
+		     (td () val)))
+		 *http-header*)))
+    (p () (home-link))))
+
+(defview query-string-test ()
+  (common "Brian Belleville - Submit Request"
+    (h2 () "Enter data in the input feilds and submit for a personalized greeting.")
+    (form (:action "/get-request/greeting" :method "get")
+      (div () "First Name:" (input (:type "text" :name "first-name")))
+      (div () "Last Name:" (input (:type "text" :name "last-name")))
+      (div () (input (:type "submit"))))))
+
+(defview personalized-greeting (first last)
+  (common "Brian Belleville - Personalized Greeting"
+    (h2 () "Hello " first " " last ", welcome to my homepage.")
+    (p () (home-link))))
+
+(defview my-greeting ()
+  (common "Brian Belleville - Personalized Greeting"
+    (h2 () "Hello Brian, welcome to your homepage.")
+    (p () (home-link))))
+		     
+		     
