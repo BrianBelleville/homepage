@@ -25,7 +25,7 @@
                                                                    "Common Lisp")
       ". The code for this site is available on "
       (strong () (a (:href "https://github.com/BrianBelleville") "GitHub")) ". "
-      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California. Here is my " (strong () (a (:href "/resume.pdf") "resume.")))
+      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California, here is my " (strong () (a (:href "/resume.pdf") "resume.")))
     (p ()
       "Here are some links to pages created to test and demonstrate the functionality of the server and web framework:")
     (ul ()
