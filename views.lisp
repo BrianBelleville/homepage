@@ -21,13 +21,13 @@
     (p ()
       "Welcome to my home page, this site was " (strong () "generated and served")
       " by a web application layer " (strong () "entirely written by me")
-      ". The code for this site and this server was written in " (strong ()
+      ". This site and this server was written in " (strong ()
                                                                    "Common Lisp")
       ". The code for this site is available on "
-      (strong () (a (:href "https://github.com/BrianBelleville") "GitHub"))
-      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California. You can view my " (strong () (a (:href "/resume.pdf") "resume")))
+      (strong () (a (:href "https://github.com/BrianBelleville") "GitHub")) ". "
+      "I am currently " age " years old and employed at " (strong () "Western Digital") " in Southern California. Here is my " (strong () (a (:href "/resume.pdf") "resume.")))
     (p ()
-      "Here are links to pages created to test and demonstrate functionality of the server and framework:")
+      "Here are some links to pages created to test and demonstrate the functionality of the server and web framework:")
     (ul ()
       (li ()
         (strong () (a (:href "/http-header") "Access to http header fields")))
